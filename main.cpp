@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+//Introduces a struct to hold information about fish
 struct Fish {
     double avgSize = 0.0;
     string color;
@@ -13,12 +13,16 @@ struct Fish {
     int dietCapacity = 0;
 };
 
+//This function manages the diet array size and populates it
 void addDiet(Fish &fish, const string &food);
 
+//This function adds fish to an overarching dynamic array and manages its size
 Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, double avgSize);
 
+//This function ouptputs details about all of the fish in the overarching array
 void printFish(const Fish *fishes, int count);
 
+//This function deletes arrays after use to avoid memory issues
 void freeFish(Fish *fishes, int count);
 
 int main() {
@@ -38,13 +42,15 @@ int main() {
     addDiet(*f, "worms");
 
     printFish(fishes, fishCount);
+    
+    //Allows user to decide whether to learn about more fish
     cout << "Would you like to learn about more fish? If yes, press y, then enter. Otherwise, press n, then enter.";
     cin >> ender;
     if (ender == 'n') {
         freeFish(fishes, fishCount);
         return 0;
     }
-    
+
     f = &addFish(fishes, fishCount, fishCapacity, "green", 2.1);
     addDiet(*f, "krill");
 
@@ -58,6 +64,7 @@ int main() {
     return 0;
 }
 
+//This function manages the diet array size and populates it
 void addDiet(Fish &fish, const string &food) {
     if (fish.dietCount == fish.dietCapacity) {
         int newCapacity = fish.dietCapacity;
@@ -79,6 +86,7 @@ void addDiet(Fish &fish, const string &food) {
     fish.dietCount++;
 }
 
+//This function adds fish to an overarching dynamic array and manages its size
 Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, double avgSize){
     int capacityNew = capacity;
     if (count == capacity) {
@@ -102,6 +110,7 @@ Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, dou
     return fishes[count - 1];
 }
 
+//This function ouptputs details about all of the fish in the overarching array
 void printFish(const Fish *fishes, int count) {
     for (int i = 0; i < count; i++) {
         cout << "Average size in feet: " << fishes[i].avgSize << endl;
@@ -112,7 +121,7 @@ void printFish(const Fish *fishes, int count) {
         else {
             cout << "Fish diet: ";
                 for (int j = 0; j < fishes[i].dietCount; j++) {
-                cout << fishes[i].diet[j] << " ";
+                    cout << fishes[i].diet[j] << " ";
             }
             cout << endl;
     
@@ -120,6 +129,7 @@ void printFish(const Fish *fishes, int count) {
     }
 }
 
+//This function deletes arrays after use to avoid memory issues
 void freeFish(Fish *fishes, int count) {
     for (int i = 0; i < count; i++) {
         delete[] fishes[i].diet;
