@@ -22,12 +22,28 @@ void printFish(const Fish *fishes, int count);
 void freeFish(Fish *fishes, int count);
 
 int main() {
-    int count = 0;
-    cout << "Enter the number of fish caught below, then press enter.";
-    cin >> count;
+    Fish* fishes = nullptr;
+    int fishCount = 0;
+    int fishCapacity = 0;
     
+    Fish *f = &addFish(fishes, fishCount, fishCapacity, "orange", 3.5);
+    addDiet(*f, "algae");
+    addDiet(*f, "shrimp");
+    addDiet(*f, "crabs");
 
-    void freeFish(Fish *fishes, int count)
+    addFish(fishes, fishCount, fishCapacity, "blue", 1.2);
+
+    f = &addFish(fishes, fishCount, fishCapacity, "brown", 0.8);
+    addDiet(*f, "worms");
+
+    printFish(fishes, fishCount);
+    cout << "Would you like to learn about more fish? If yes
+
+
+
+
+    void freeFish(fishes, fishCount);
+    return 0;
 }
 
 void addDiet(Fish &fish, const string &food) {
@@ -76,7 +92,7 @@ Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, dou
 
 void printFish(const Fish *fishes, int count) {
     for (int i = 0; i < count; i++) {
-        cout << "Average size: " << fishes[i].avgSize << endl;
+        cout << "Average size in feet: " << fishes[i].avgSize << endl;
         cout << "Fish color: " << fishes[i].color << endl;
         if (fishes[i].diet == nullptr) {
             cout << "No diet reported" << endl;
