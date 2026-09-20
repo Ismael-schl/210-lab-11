@@ -18,7 +18,10 @@ void addDiet(Fish &fish, const string &food);
 Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, double avgSize);
 
 int main() {
-    
+    int numFish = 0;
+    cout << "Enter the number of fish caught below, then press enter.";
+    cin >> numFish;
+
 }
 
 void addDiet(Fish &fish, const string &food) {
@@ -27,8 +30,9 @@ void addDiet(Fish &fish, const string &food) {
         if (fish.dietCapacity == 0){
             newCapacity = 2;
         }
-        else 
+        else {
         newCapacity = fish.dietCapacity *2;
+        }
         string *bigger = new string[newCapacity];
         for (int i = 0; i <fish.dietCount; i++) {
         bigger[i] = fish.diet[i];
@@ -39,4 +43,24 @@ void addDiet(Fish &fish, const string &food) {
     }
     fish.diet[fish.dietCount] = food;
     fish.dietCount++;
+}
+
+Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, double avgSize){
+    if (count == capacity) {
+        int capacityNew = capacity;
+        if (capacity == 0){
+            capacityNew = 2;
+        }
+        else {
+        newCapacity = fish.dietCapacity *2;
+        }
+        string *bigger = new string[newCapacity];
+        for (int i = 0; i <fish.dietCount; i++) {
+        bigger[i] = fish.diet[i];
+        }
+        delete[] fish.diet;
+        fish.diet = bigger;
+        fish.dietCapacity = newCapacity;
+    }
+    }
 }
