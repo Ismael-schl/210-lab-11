@@ -22,6 +22,7 @@ void printFish(const Fish *fishes, int count);
 void freeFish(Fish *fishes, int count);
 
 int main() {
+    char ender = 'a';
     Fish* fishes = nullptr;
     int fishCount = 0;
     int fishCapacity = 0;
@@ -37,12 +38,23 @@ int main() {
     addDiet(*f, "worms");
 
     printFish(fishes, fishCount);
-    cout << "Would you like to learn about more fish? If yes
+    cout << "Would you like to learn about more fish? If yes, press y, then enter. Otherwise, press n, then enter.";
+    cin >> ender;
+    if (ender == 'n') {
+        freeFish(fishes, fishCount);
+        return 0;
+    }
+    
+    f = &addFish(fishes, fishCount, fishCapacity, "green", 2.1);
+    addDiet(*f, "krill");
 
+    f = &addFish(fishes, fishCount, fishCapacity, "red", 3.3);
+    addDiet(*f, "krill");
+    
+    addDiet(fishes[1], "minnows");
+    printFish(fishes, fishCount);
 
-
-
-    void freeFish(fishes, fishCount);
+    freeFish(fishes, fishCount);
     return 0;
 }
 
