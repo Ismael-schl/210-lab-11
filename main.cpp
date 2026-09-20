@@ -13,7 +13,7 @@ struct Fish {
     int dietCapacity = 0;
 };
 
-string* addDiet(string* diet);
+void* addDiet(Fish &fish, const string &food);
 
 Fish &addFish(Fish *&fishes, int &count, int &capacity, const string &color, double avgSize);
 
@@ -21,8 +21,14 @@ int main() {
     
 }
 
-string* addDiet(string* diet) {
-    string food;
-    cout >> "What does this fish eat? Enter an item then press enter, then press 1. When complete, press 0";
-    while ()
+void* addDiet(Fish &fish, const string &food) {
+    if (fish.dietCount == fish.dietCapacity) {
+        int newCapacity = fish.dietCapacity;
+        if (fish.dietCapacity == 0){
+            newCapacity = 2;
+        }
+        else 
+        newCapacity = fish.dietCapacity *2;
+
+    }
 }
